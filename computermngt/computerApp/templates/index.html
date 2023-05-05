@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        {% block title %}
+        <title>Bibliothèque locale</title>
+        {% endblock %}
+        <meta charset="utf-8">
+        <meta name="viewport" 
+        content="width=device-width,
+        initial-scale=1.0">
+
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    </head>
+
+    <body>
+        <h1> R&T Dev</h1>
+    {% block sidebar %}
+        <h2> Menu</h2>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'machines' %}">Machine</a></li>
+                <li><a href="{% url 'personnes' %}">Personnes</a></li>
+            <ul id ="menu">
+
+            </ul>
+        {% endblock %}
+
+        {% load static %}
+    <img src="{% static 'computerApp/images/firefox_200px.png' %}"
+    alt="logo" style="width:200px;height:200px;">
+        <img src="{% static 'computerApp/images/google_200px.jpeg' %}"
+    alt="logo" style="width:400px;height:400px;">
+
+        {% block content %}
+                Blabla 1ere page
+        {% endblock %}
+
+    </body>
+</html>
