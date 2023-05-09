@@ -9,9 +9,12 @@ urlpatterns = [
     path('machine/<pk>',
      views.machine_detail_view,
      name='machine-detail'),
-    path('personne/<st>',
+
+     path('personnes/',
+     views.personne_list_view,
+     name='personnes'),
+     path('personne/<st>', 
      views.personne_detail_view,
-     name='machine-detail'),
-     path('personnes/', views.personne_list_view, name='personnes'),
+     name='personne-detail'),
 
 ]
