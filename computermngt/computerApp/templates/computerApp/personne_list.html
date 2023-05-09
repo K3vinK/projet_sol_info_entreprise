@@ -6,6 +6,7 @@
   <ul>
     {% for personne in personnes %}
         <li>
+            <a href="{% url 'personne-detail' personne.id %}">
             {{ personne.id}} - ({{personne.nom}})
         </li>
     {% endfor %}
