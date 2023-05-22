@@ -1,11 +1,28 @@
 {% extends "index.html" %}
 
 {% block content %}
-  <h1> Nom: {{ machine.name }}</h1>
-  
-  <p><strong>id</strong> : {{ machine.id }}</a></p>
-  <p><strong>Date de maintenance :</strong> {{ machine.maintenanceDate }}</p>
-  <p><strong>Machine :</strong> : {{ machine.mach }}</p>
-
+    <h1>Informations sur la machine</h1>
+    <table class="table table-striped">
+        <tr>
+            <th>Nom : </th>
+            <td>{{ machine.nom }}</td>
+        </tr>
+        <tr>
+            <th>ID : </th>
+            <td>{{ machine.id }}</td>
+        </tr>
+        <tr>
+            <th>Date de maintenance : </th>
+            <td>{{ machine.maintenanceDate }}</td>
+        </tr>
+        <tr>
+            <th>Type : </th>
+            <td>{{ machine.Type }}</td>
+        </tr>
+        <tr>
+            <th>Propriétaire : </th>
+            <td>{{ personne.prenom }}</td>
+        </tr>
+    </table>
 
 {% endblock %}
