@@ -1,11 +1,13 @@
+
+
 {% extends "index.html" %}
 
-{% block content %}
 
-<form method="post">
-{% csrf_token %}
-{{ form.nom }}
-{{ form.as_p }}
-<input type="submit" value="{{form.submit_label}}">
-</form>
+
+{% block content %}
+  <h1>Person detail</h1>
+  <p>ID: {{ personne.id }}</p>
+  <br>
+  <p>Name: {{ personne.nom }}</p>
+
 {% endblock %}
