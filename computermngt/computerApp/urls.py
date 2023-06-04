@@ -13,4 +13,8 @@ urlpatterns = [
     path('personne/<pk>', views.personne_detail_view, name='personne-detail'),
     path('add-personne/', views.person_add_form, name='add-personne'),
 
+
+    path('login_user', views.login_user, name="login"),
+    path('logout_user', views.logout_user, name="logout"),
+    path('register_user', views.register_user, name="register_user"),
 ]
