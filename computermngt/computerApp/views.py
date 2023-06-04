@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect
 from computerApp.models import AddMachineForm, AddPersonForm, Machine
 from computerApp.models import Personne
 from django.shortcuts import get_object_or_404
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
 
 
 def index(request) :
@@ -57,4 +60,36 @@ def person_add_form(request):
         form = AddPersonForm()
     
     context = {'form': form}
+    return render(request, 'computerApp/personne_add.html', context)
+
+
+def login_user(request):
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, )
+        if user is not None:
+            login(request, user)
+            return redirect('home')
+        else:
+            messages.success(request, )
+            return redirect('login')
+
+def logout_user(request):
+    logout(request)
+    messages.success(request, ("You were deconnected"))
+    return redirect('home')
+
+def register_user(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password1']
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            messages.success(request, ("Registration successfull"))
+            return redirect('home')
+    return render(request, 'computerApp/register_user.html', {})
     return render(request, 'computerApp/personne_add.html', context)
