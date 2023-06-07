@@ -1,0 +1,12 @@
+{% extends 'index.html' %}
+
+{% block content %}
+  <h2>Delete Machine</h2>
+  <p>Are you sure you want to delete the machine "{{ machine.name }}"?</p>
+  <form method="POST" action="{% url 'machine-delete' machine.pk %}">
+    {% csrf_token %}
+    <input type="submit" value="Delete">
+  </form>
+{% endblock %}
+
+
