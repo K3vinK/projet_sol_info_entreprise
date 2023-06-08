@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
-    "django.contrib.staticfiles"
+    "django.contrib.staticfiles",
+
 ]
 
 MIDDLEWARE = [
@@ -51,27 +52,31 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+
 ]
 
 ROOT_URLCONF = "computermngt.urls"
 
 TEMPLATES = [
     {
-        "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [
-            'computerApp/'
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            os.path.join(BASE_DIR, 'computerApp/templates'),
         ],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+       'APP_DIRS': True,
         'APP_DIRS': True,
-        "OPTIONS": {
-            "context_processors": [
-                "django.template.context_processors.debug",
-                "django.template.context_processors.request",
-                "django.contrib.auth.context_processors.auth",
-                "django.contrib.messages.context_processors.messages",
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
             ],
         },
     },
 ]
+
 
 WSGI_APPLICATION = "computermngt.wsgi.application"
 
@@ -122,8 +127,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 STATIC_URL = '/static/'
 
+
+LOGIN_REDIRECT_URL = '/computerApp/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static/')]
+
 
 
 # Default primary key field type
