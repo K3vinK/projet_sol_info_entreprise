@@ -1,0 +1,11 @@
+{% extends "index.html" %}
+
+{% block content %}
+  <h2>Delete Machine</h2>
+
+  <form method="post" class="form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-danger">Delete</button>
+  </form>
+{% endblock %}
