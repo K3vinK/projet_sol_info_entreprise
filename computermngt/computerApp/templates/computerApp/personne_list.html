@@ -2,6 +2,13 @@
 
 {% block content %}
   <h1>Liste des personnes</h1>
+  {% load static %} 
+  <a href="{% url 'add-personne' %}">
+    <img src="{% static 'computerApp/images/add.png' %}" alt="logo_del" style="width:50px;height:50px;">
+  </a>
+  <a href="{% url 'del-personne' %}">
+    <img src="{% static 'computerApp/images/trash.png' %}" alt="logo_del" style="width:50px;height:50px;">
+  </a>
   {% if personnes %}
     <ul>
       {% for personne in personnes %}
@@ -15,4 +22,5 @@
   {% else %}
     <p>Il n'y a pas de personnes.</p>
   {% endif %}
+
 {% endblock %}
