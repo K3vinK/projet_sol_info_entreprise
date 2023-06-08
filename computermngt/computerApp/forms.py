@@ -1,6 +1,6 @@
 from django import forms
 from django . core . exceptions import ValidationError
-from .models import Machine
+from .models import Machine, Personne
 
 
 class AddMachineForm(forms.Form):
@@ -16,14 +16,24 @@ class AddMachineForm(forms.Form):
 
 class DelMachineForm(forms.ModelForm):
     class Meta:
-        model = Machine
-        fields = []  # No fields are required for the deletion form
+        model = Machine  # Specify the model class associated with the form
+        fields = ['machine_id']  # Specify the fields you want to include in the form
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['machine_id'] = forms.ModelChoiceField(queryset=Machine.objects.all(), empty_label=None, label='Machine')
+    machine_id = forms.ModelChoiceField(queryset=Machine.objects.all(), label="Select Machine") #label permet de changer des noms
 
     def delete_machine(self):
         machine = self.cleaned_data.get('machine_id')
-        machine.delete()
+        if machine:
+            machine.delete()
 
+class DelPersonneForm(forms.ModelForm):
+    class Meta:
+        model = Personne
+        fields = ['personne_id']
+
+    personne_id = forms.ModelChoiceField(queryset=Personne.objects.all(), label="Select Person")
+
+    def delete_personne(self):
+        personne = self.cleaned_data.get('personne_id')
+        if personne:
+            personne.delete()
